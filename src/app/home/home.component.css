@@ -1,0 +1,5 @@
+.bg{
+    background-image: url('src/assets/img/bg.jpg');
+    height: 80vh;
+    display:block;
+}
