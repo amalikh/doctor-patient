@@ -1,0 +1,5 @@
+Clinic: Id, Name, Location, Telephone, Timings, Email
+Doctor: Id, First Name, Last Name, Email, Mobile, Location, CNIC, ClinicID,  Qualification
+Patient: Id, First Name, Last Name, Email, Mobile, Location, CNIC
+Appointment: Id, Doctor Id, Patient Id, Date, Time,  Status
+Appointment-Info: Id, Appointment Id, Prescription, Medicine
