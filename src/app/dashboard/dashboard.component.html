@@ -1,23 +1,41 @@
-<div class="wrapper container">
-<p>dashboard works</p>
-</div>
+<div class="container-fluid" id="wrapper">
     <!-- Sidebar -->
-    <!-- <nav id="sidebar-wrapper" class="navbar navbar-inverse navbar-fixed-top">
-        <div class="sidebar-header">
-            <h3>Bootstrap Sidebar</h3>
-        </div>
-        <ul class="nav sidebar-nav">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
             <li class="sidebar-brand">Dummy Heading</li>
-            <li>
-                <a href="#">Clinic</a>
-            </li>
+            <li><a href="#">Clinic</a></li>
             <li><a href="#">Doctor</a></li>
             <li><a href="#">Patient</a></li>
             <li><a href="#">Appointment</a></li>
         </ul>
-    </nav> -->
+    </div> <!-- sidebar-wrapper -->
 
     <!-- Page Content -->
-    <!-- <div id="content"> -->
-        <!-- We'll fill this with dummy content -->
-    <!-- </div> -->
+    <div class="container-fluid" id="content">
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">Clinic Id</th>
+                    <th >Clinic Name</th>
+                    <th>Location</th>
+                    <th>Telephone</th>
+                    <th>Timings</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of dataapi" class="table-light">
+                    <td>{{items.ID}}</td>
+                    <td>{{items.clname}}</td>
+                    <td>{{items.cllocation}}</td>
+                    <td>{{items.cltelephone}}</td>
+                    <td>{{items.cltime}}</td>
+                    <td>{{items.clemail}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+
