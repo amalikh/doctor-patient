@@ -1,24 +1,21 @@
-<p>clinics works!</p>
-<!-- <div class="container-fluid" id="wrapper">
-    Sidebar
-    <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-            <li class="sidebar-brand">Dummy Heading</li>
-            <li><a routerLink="/clinics">Clinic</a></li>
-            <li><a routerLink="/doctors">Doctor</a></li>
-            <li><a href="#">Patient</a></li>
-            <li><a href="#">Appointment</a></li>
-        </ul>
-    </div> sidebar-wrapper
-
-    Page Content
+    <!-- Page Content -->
     <div class="container-fluid" id="content">
-        <div class="p-3"><button class="btn btn-dark text-right">Add Clinic</button></div>
+        <!--<form>
+         <select name="" id="" (change)="getclinicbyID($event)"> 
+            <select>
+            <option *ngFor="let items of dataapi" value={{items.clid.ID}}>{{items.clname}}</option>
+        </select>
+    </form>-->
+        <div class="p-3 float-end">
+            <button class="btn btn-dark" (click)="clickAdd()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Clinic</button>
+        </div>
+        
+         
         <table class="table">
             <thead>
                 <tr class="table-success">
                     <th scope="col">Clinic Id</th>
-                    <th >Clinic Name</th>
+                    <th>Clinic Name</th>
                     <th>Location</th>
                     <th>Telephone</th>
                     <th>Timings</th>
@@ -28,21 +25,68 @@
             </thead>
             <tbody>
                 <tr *ngFor="let items of dataapi" class="table-light">
-                    <td>{{items.ID}}</td>
+                    <!-- <td>{{items.ID}}</td>
+                    <td>{{items.clname}}</td>
+                    <td>{{items.cllocation}}</td>
+                    <td>{{items.cltelephone}}</td>
+                    <td>{{items.cltime}}</td>
+                    <td>{{items.clemail}}</td> -->
+                    <td>{{items.clid.ID}}</td>
                     <td>{{items.clname}}</td>
                     <td>{{items.cllocation}}</td>
                     <td>{{items.cltelephone}}</td>
                     <td>{{items.cltime}}</td>
                     <td>{{items.clemail}}</td>
                     <td>
-                        <button class="btn btn-success">Update</button>&nbsp;
-                        <button class="btn btn-danger">Delete</button></td>
+                        <button class="btn" (click)="onEdit(items)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-edit" style="font-size:30px;"></i></button>&nbsp;
+                        <button class="btn" type="button" (click)="deleteCli(items)"><i class="fa fa-trash" style="font-size:30px;color:red;"></i></button>
+                        
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
-    /#page-content-wrapper
+    <!-- /#page-content-wrapper -->
 
-</div> -->
-
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Employee Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formValue" (ngSubmit)="onSubmit()" novalidate>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Clinic Name</label>
+                            <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <div *ngIf="getControl.name.touched && getControl.name.invalid" class="text-danger">
+                                <div *ngIf="getControl.name.errors.required">Name is required.</div>
+                                </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Location</label>
+                            <input type="text" formControlName="location" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Telephone</label>
+                            <input type="number" formControlName="telephone" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Time</label>
+                            <input type="text" formControlName="time" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" *ngIf="showAdd" (click)="postClinic()" class="btn btn-primary">Add</button>
+                    <button type="button" *ngIf="showUpdate" (click)="updateClinic()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>

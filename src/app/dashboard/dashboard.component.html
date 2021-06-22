@@ -2,59 +2,54 @@
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand">Dummy Heading</li>
-            <li><a routerLink="/clinics">Clinic</a></li>
+            <li class="sidebar-brand">Welcome!</li>
+            <li><a routerLink="/dashboard/clinics">Clinic</a></li>
             <li><a routerLink="/doctors">Doctor</a></li>
-            <li><a href="#">Patient</a></li>
-            <li><a href="#">Appointment</a></li>
+            <li><a routerLink="/patients">Patient</a></li>
+            <li><a routerLink="/appointments">Appointment</a></li>
         </ul>
     </div> 
     <!-- sidebar-wrapper -->
+    <div><router-outlet></router-outlet></div>
 
-    <!-- Page Content -->
-    <div class="container-fluid" id="content">
-        <div class="p-3"><button class="btn btn-dark text-right" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Clinic</button></div>
-        
-         
-        <table class="table">
-            <thead>
-                <tr class="table-success">
-                    <th scope="col">Clinic Id</th>
-                    <th>Clinic Name</th>
-                    <th>Location</th>
-                    <th>Telephone</th>
-                    <th>Timings</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let items of dataapi" class="table-light">
-                    <!-- <td>{{items.ID}}</td>
-                    <td>{{items.clname}}</td>
-                    <td>{{items.cllocation}}</td>
-                    <td>{{items.cltelephone}}</td>
-                    <td>{{items.cltime}}</td>
-                    <td>{{items.clemail}}</td> -->
-                    <td>{{items.clid.ID}}</td>
-                    <td>{{items.clname}}</td>
-                    <td>{{items.cllocation}}</td>
-                    <td>{{items.cltelephone}}</td>
-                    <td>{{items.cltime}}</td>
-                    <td>{{items.clemail}}</td>
-                    <td>
-                        <button class="btn" (click)="onEdit(items)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-edit" style="font-size:30px;"></i></button>&nbsp;
-                        <button class="btn" type="button" (click)="deleteCli(items)"><i class="fa fa-trash" style="font-size:30px;color:red;"></i></button>
-                        
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <!-- /#page-content-wrapper -->
+
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="container-fluid" id="content">
+    <div class="p-3"><button class="btn btn-dark text-right" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Clinic</button></div>
+    
+     
+    <table class="table">
+        <thead>
+            <tr class="table-success">
+                <th scope="col">Clinic Id</th>
+                <th>Clinic Name</th>
+                <th>Location</th>
+                <th>Telephone</th>
+                <th>Timings</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let items of dataapi" class="table-light">
+                <td>{{items.clid.ID}}</td>
+                <td>{{items.clname}}</td>
+                <td>{{items.cllocation}}</td>
+                <td>{{items.cltelephone}}</td>
+                <td>{{items.cltime}}</td>
+                <td>{{items.clemail}}</td>
+                <td>
+                    <button class="btn" (click)="onEdit(items)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-edit" style="font-size:30px;"></i></button>&nbsp;
+                    <button class="btn" type="button" (click)="deleteCli(items)"><i class="fa fa-trash" style="font-size:30px;color:red;"></i></button>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -93,9 +88,8 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
-<div>
-    <router-outlet></router-outlet>
-</div>
+
+  

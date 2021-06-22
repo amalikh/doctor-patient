@@ -18,6 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   goToDashboard(){
-    this.router.navigate(['/dashboard/admin']); 
+    this.router.navigate(['/dashboard']); 
 }
 }

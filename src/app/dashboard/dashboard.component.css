@@ -1,24 +1,20 @@
-
-/* body {
-    overflow-y: hidden;
-  } */
-
 #wrapper {
-    display:flex;
     min-height: 100vh;
     padding-left: 0;
     padding-right: 0;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 20px;
 } 
 
 #sidebar-wrapper {
-    /* background-color: #e3f2fd; */
     background-color: rgb(27, 23, 23);
   }
   /* Sidebar Styles */
 .sidebar-brand{color: white;}
 .sidebar-nav {
 padding: 0;
-    width: 200px;
+    /* width: 200px; */
     list-style: none;
   }
   
@@ -31,7 +27,8 @@ padding: 0;
     display: block;
     text-decoration: none;
     color: white;
-    border: 1px solid black;
+    
+    /* border: 1px solid black; */
   }
   
   .sidebar-nav li a:hover {

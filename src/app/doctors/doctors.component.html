@@ -1,0 +1,102 @@
+    <!-- Page Content -->
+    <div class="container-fluid" id="content">
+        <div class="p-3 float-end">
+            <button class="btn btn-dark" (click)="clickAdd()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Doctor</button>
+        </div>
+        
+         
+        <table class="table">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">Id</th>
+                    <th>Clinic ID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Location</th>
+                    <th>Qualification</th>
+                    <th>CNIC</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let items of dataapi" class="table-light">
+                    <td>{{items.did.ID}}</td>
+                    <td>{{items.cid}}</td>
+                    <td>{{items.docfirstname}}</td>
+                    <td>{{items.doclastname}}</td>
+                    <td>{{items.docemail}}</td>
+                    <td>{{items.docmobile}}</td>
+                    <td>{{items.doclocation}}</td>
+                    <td>{{items.docqualification}}</td>
+                    <td>{{items.doccnic}}</td>
+
+                    <td>
+                        <button class="btn" (click)="onEdit(items)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-edit" style="font-size:30px;"></i></button>&nbsp;
+                        <button class="btn" type="button" (click)="deleteDoctor(items)"><i class="fa fa-trash" style="font-size:30px;color:red;"></i></button>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Doctor Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formValue" (ngSubmit)="onSubmit()" novalidate>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">First Name</label>
+                            <input type="text" formControlName="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                <!-- </div> -->
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Last Name</label>
+                            <input type="text" formControlName="lastname" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Clinic Name</label>
+                            <select formControlName="clinicid" class="form-select" type="number" (change)=selected($event)>
+                                <option selected disabled>Select Clinic</option>
+                                <option *ngFor="let items of dataapiclinic" value={{items.clid.ID}}>{{items.clname}}</option>
+                            </select>
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Email</label>
+                            <input type="email" formControlName="email" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Mobile</label>
+                            <input type="number" formControlName="mobile" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Location</label>
+                            <input type="text" formControlName="location" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Qualification</label>
+                            <input type="text" formControlName="qualification" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">CNIC</label>
+                            <input type="number" formControlName="cnic" class="form-control" id="exampleInputPassword1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" *ngIf="showAdd" (click)="postDoctor()" class="btn btn-primary">Add</button>
+                    <button type="button" *ngIf="showUpdate" (click)="updateDoctor()" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
